@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- Header -->
+
+<head>
+	<meta charset="utf-8">
+	<title> 랜던 자리 배치 프로그램 </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script type="text/javascript">
+		// 남여 명단
+		var males = ["김동범", "김민재", "김종주", "김주승", "김준혁", "김진우", "김효상", "남동길", "노종범", "박민주", "백기반", "성동원", "손원락", "손혜성", "송현석", "신종욱", "오병준", "우연찬", "위재원", "은종현", "이경민", "이상훈", "이융성", "이인성", "이종건", "이창주", "임혜성", "장동주", "정광수", "정진", "조국", "조현우", "주형진", "차주현", "최규호", "최준우", "허빛찬샘"];
+		var females = ["강혜정", "고하윤", "김수진", "김윤지", "박소현", "박보미", "이경화", "유희수", "장진영", "조은솔", "진민영", "채유진", "최영롱"];
+
+		// init
+		var malesCount = males.length;
+		var femalesCount = females.length;
+		var randomValue = 0;
+		var seatNum = 0;
+
+		// 자리 배치 함수
+		function allocationSeats() {
+			// 초기화 함수
+			init();
+			// 여자 배치
+			while (true) {
+				for (var i = 1; i <= females.length; i++) {
+					// 1-50까지의 랜덤값 생성
+					randomValue = Math.floor(Math.random() * 50) + 1;
+					console.log("women randomValue= " + randomValue);
+
+					seatNum = ((randomValue % 4) == 0 ? 4 : (randomValue % 4)) + ((i - 1) * 4);
+					console.log("women seatNum= " + seatNum);
+
+					// 50이 넘으면
+					if (seatNum > 50) {
+						randomValue = Math.floor(Math.random() * 50) + 1;
+						// 값을 2로 나눠서 49 or 50에 배치
+						seatNum = ((randomValue % 2) == 1 ? 49 : 50);
+					}
+					// 자리 배정
+					document.getElementById(seatNum).innerHTML = females[i - 1];
+					document.getElementById(seatNum).style.backgroundColor = "yellow";
+					femalesCount--;
+				}
+				// 여자를 다 세면 break
+				if (femalesCount == 0) break;
+			}
+
+			// 남자 배치
+			while (true) {
+				for (var i = 1; i <= males.length; i++) {
+					// 1-50까지의 랜덤값 생성
+					randomValue = Math.floor(Math.random() * 50) + 1;
+					console.log("mens randomValue= " + randomValue);
+
+					// 남자는 중첩이 상관없기 때문에 랜덤값이 좌석 번호
+					seatNum = randomValue;
+					console.log("mens seatNum= " + seatNum);
+
+					// 비어 있으면
+					if ((document.getElementById(randomValue).firstChild) == null) {
+						// 해당 남자 자리에 앉히기
+						document.getElementById(seatNum).innerHTML = males[i - 1];
+						// 남자 수 -1
+						malesCount--;
+						// 남아있는 남자 수
+					} else {
+						// 자리에 누가 있으면 i++ 후 다시 for 문
+						console.log("이미 있는 좌석입니다.");
+						i--;
+					}
+				}
+				// 남자를 다 세면 break
+				if (malesCount == 0) break;
+			}
+		}
+
+		function init(){
+			// 남여 순서 섞기
+			shuffle(females);
+			shuffle(males);
+
+			malesCount = males.length;
+			femalesCount = females.length;
+			randomValue = 0;
+			seatNum = 0;
+
+			// 좌석 초기화
+			for(var i = 1; i <= 50 ; i++){
+				document.getElementById(i).innerHTML="";
+				document.getElementById(i).style.backgroundColor="";
+			}
+		}
+		// 순서 섞기 Function
+		function shuffle(array) {
+			var currentIndex = array.length;
+			var temporaryValue;
+			var randomIndex;
+
+			// Element가 남아있는 동안
+			while (0 !== currentIndex) {
+				// 남아있는 Element 선택
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+				// Swap.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+			return array;
+		}
+	</script>
+	<style>
+		.seats {
+			width: 100%;
+			border: 1px solid #444444;
+			text-align: center;
+		}
+
+		header {
+			text-align: center;
+		}
+
+		td {
+			border: 1px solid #444444;
+			width: 10%;
+			height: 50px;
+		}
+
+		h3 {
+			width: 100px;
+			text-align: center;
+			border: 1px solid black;
+			padding: 10px;
+			margin: 20px auto;
+		}
+
+		.none {
+			background-color: dimgrey;
+		}
+
+	</style>
+</head>
+<!-- Body -->
+
+<body>
+	<header>
+		<h1> 랜덤 자리 배치 </h1>
+	</header>
+
+	<div class="container">
+		<table class="seats">
+			<tr>
+				<td class="none"> </td>
+				<td class="none"> </td>
+				<td id="50"></td>
+				<td id="49"></td>
+				<td class="none"> </td>
+				<td class="none"> </td>
+				<td class="none"> </td>
+				<td class="none"> </td>
+			</tr>
+			<tr>
+				<td id="48"></td>
+				<td id="47"></td>
+				<td id="46"></td>
+				<td id="45"></td>
+				<td id="44"></td>
+				<td id="43"></td>
+				<td id="42"></td>
+				<td id="41"></td>
+			</tr>
+			<tr>
+				<td id="40"></td>
+				<td id="39"></td>
+				<td id="38"></td>
+				<td id="37"></td>
+				<td id="36"></td>
+				<td id="35"></td>
+				<td id="34"></td>
+				<td id="33"></td>
+			</tr>
+			<tr>
+				<td id="32"></td>
+				<td id="31"></td>
+				<td id="30"></td>
+				<td id="29"></td>
+				<td id="28"></td>
+				<td id="27"></td>
+				<td id="26"></td>
+				<td id="25"></td>
+			</tr>
+			<tr>
+				<td id="24"></td>
+				<td id="23"></td>
+				<td id="22"></td>
+				<td id="21"></td>
+				<td id="20"></td>
+				<td id="19"></td>
+				<td id="18"></td>
+				<td id="17"></td>
+			</tr>
+			<tr>
+				<td id="16"></td>
+				<td id="15"></td>
+				<td id="14"></td>
+				<td id="13"></td>
+				<td id="12"></td>
+				<td id="11"></td>
+				<td id="10"></td>
+				<td id="9"></td>
+			</tr>
+			<tr>
+				<td id="8"></td>
+				<td id="7"></td>
+				<td id="6"></td>
+				<td id="5"></td>
+				<td id="4"></td>
+				<td id="3"></td>
+				<td id="2"></td>
+				<td id="1"></td>
+			</tr>
+		</table>
+		<div>
+			<h3> 스크린 </h3>
+		</div>
+
+		<input type="button" value="자리 배치" onclick="allocationSeats()">
+		<input type="button" value="초기화" onclick="init()">
+	</div>
+</body>
+
+</html>
