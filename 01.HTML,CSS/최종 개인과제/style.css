@@ -1,0 +1,233 @@
+/* 초기화 */
+* {
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+}
+
+body {
+	background: white;
+	position: relative;
+	font-size: 16px;
+	line-height: 2em;
+	overflow: hidden;
+}
+
+div {
+	display: block;
+}
+
+p {
+	margin-bottom: 3em;
+	margin-top: 0;
+	color: #777;
+	border-bottom: 1px solid black;
+	padding-bottom: 15px;
+}
+
+.top-nav {
+	position: fixed;
+	z-index: 130;
+	width: 100%;
+	height: 100px;
+	background: #fff;
+}
+
+.container {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	top: 100px;
+}
+
+.top-nav-inner {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.top-nav-table {
+	display: table;
+	float: none;
+	margin-bottom: 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+.top-nav-table-tr {
+	display: table-row;
+	float: none;
+}
+
+.top-nav #nav-logo{
+	color: #fff;
+	margin: 40px 0 0 15px;
+	width: 1px;
+	padding-left: 15px;
+}
+
+.top-nav-table-td {
+	display: table-cell;
+	float: none;
+	color: #fff;
+	margin: 40px 0 0 15px;
+	width: 1px;
+	padding-left: 15px;
+	vertical-align: middle;
+}
+
+ul.top-menu {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+li.top-menu-item {
+	float: left;
+	padding-right: 20px;
+	padding-left: 20px;
+	list-style: none;
+}
+
+li.top-menu-item > a{
+	float: left;
+	color: #222;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+#header-logo {
+}
+
+#header-logo-img {
+	width: 150px;
+	height: 50px;
+}	
+
+/* Main Page */
+.fullpage-main {
+	width: 100%;
+	position: relative;
+	background-color: black;
+}
+
+#video {
+	width: 100%;
+	position: relative;
+	
+	z-index: 99;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+/* Intro CSS*/
+.intro-main{
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+}
+
+#intro-title{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	font-family: Lato;
+	font-style: normal;
+	font-size: 45px;
+	height: 40px;
+/*	border-bottom: 1px solid black;*/
+}
+
+.content{
+	height: 300px;
+	margin-bottom: 25px;
+	display: inline-block;	
+}
+
+.content-intro{
+	height: 300px;
+	width: 48%;
+	display: inline-block;	
+	overflow: hidden;
+	margin-right: 5px;
+}
+
+.left-quarter-side {
+	float: left;
+	width: 55%;
+	height: 280px;
+
+}
+
+.right-quarter-side {
+	width: 40%;
+}
+
+/* Gallary */
+#img-toggle-btn {
+	position: absolute;
+	right: 15px;
+  background-color: #82c8a0;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sidepost-third-div {
+	text-align: center;
+	margin-right: 1%;
+	margin-left: 1%;
+	width: 30%;
+	float: left;
+}
+
+.thumbnail-img {
+	
+}
+
+.short-title {
+	
+}
+
+.intro-img {
+	width:85%;
+	height: 200px;
+/*	vertical-align: middle;*/
+/*	margin-top: 20px;*/
+	margin-right: 2%;
+	overflow: hidden;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 2.5px;
+	transition: 0.2s;
+}
+
+.intro-img:hover {
+	box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+.title-catsIntro {
+	font-family: Lato;
+	text-transform: none;
+	line-height: 1.4em;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 18px;
+	color: #000;
+	margin-bottom: 7px;
+}
+
+.content-catsIntro{
+	font-family: "Open Sans";
+	line-height: 1.8em;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 15px;
+	margin-bottom: 1em;
+	color: #777;
+}
+

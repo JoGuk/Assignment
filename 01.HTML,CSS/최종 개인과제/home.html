@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- Header -->
+
+<head>
+	<meta charset="utf-8">
+	<title> Home </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="libs/jquery-1.11.0.min.js"></script>
+
+	<script type="text/javascript">
+		var $videoVal = null;
+		var playList = null;
+		var playIndex = null;
+
+		$(document).ready(function() {
+			// 초기화
+			init();
+
+			videoResize();
+			
+			$videoVal.on('ended', function() {
+//				alert("The audio has ended");
+				if(playIndex == playList.length-1){
+					playIndex = 0;
+				} else{
+					playIndex++;
+				}
+				$videoVal.attr('src', playList[playIndex]);
+			})
+		});
+
+		function init() {
+			// 변수값 초기화
+			$videoVal = $('#video');
+			playIndex = 0;
+			playList = ['data/video/walking.mp4', 'data/video/snap1.mp4', 'data/video/snap2.mp4', 'data/video/sancheck.mp4'];
+			$videoVal.attr('src', playList[playIndex]);
+		}
+		
+		// 배율에 따른 영상 사이즈 변환 메소드
+		function videoResize() {
+			// 사이즈 동적변환
+			$videoVal.css('width', $(window).width());
+			$videoVal.css('height', $(window).height() - 40);
+			$(window).resize(function() {
+				$videoVal.css('width', $(window).width());
+				$videoVal.css('height', $(window).height() - 40);
+			});
+		}
+	</script>
+</head>
+<!-- Body -->
+
+<body>
+	<!-- top bar-->
+	<div class="top-nav">
+		<div class="top-nav-inner">
+			<div class="top-nav-table">
+				<div class="top-nav-table-tr">
+					<div class="top-nav-table-td" id="nav-logo">
+						<!-- Logo -->
+						<a href="#" id="header-logo">
+							<img src="data/logo_test.png" alt="Home" id="header-logo-img">
+						</a>
+					</div>
+					<div class="top-nav-table-td">
+						<ul class="top-menu">
+							<li class="top-menu-item">
+								<a href="intro.html"> Intro </a>
+							</li>
+							<li class="top-menu-item">
+								<a href="gallary.html"> Gallary </a>
+							</li>
+							<li class="top-menu-item">
+								<a href="board.html"> Q&A </a>
+							</li>
+							<li class="top-menu-item">
+								<a href="login.html"> Login </a>
+							</li>
+							<li class="top-menu-item">
+								<a href="signup.html"> Signup</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Content(right aside) -->
+	<div class="container">
+		<!-- 게시글 목록	-->
+		<div class="fullpage-main">
+			<div id="video-bg">
+				<video autoplay="1" id="video"> </video>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
